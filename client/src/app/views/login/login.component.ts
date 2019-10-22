@@ -18,10 +18,10 @@ export class LoginComponent {
   onSubmit() {
 
 
-    this.http.post('http://localhost:8000/login', this.form).subscribe(
+    this.http.post('http://localhost:8000/api/auth/login', this.form).subscribe(
 
-      data => console.log("HERE IS DATA:", data),
-      error => console.log("HERE IS ERROR:", error)
+      data => console.log(data),
+      error => console.log(error)
     );
 
   }
