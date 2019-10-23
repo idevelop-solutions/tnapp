@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RegisterService } from '../../Services/register.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,15 +18,13 @@ export class RegisterComponent {
   public error =[];
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private registerService: RegisterService) { }
 
-  onSubmit() {  
-    this.http.post('http://localhost:8000/api/register', this.form).subscribe(
-
+  onSubmit() {
+    this.registerService.register(this.form).subscribe(
       data => console.log(data),
       error => this.handleError(error)
     );
-
   }
 
   handleError(error){
