@@ -19,10 +19,7 @@ export class LoginComponent {
   constructor(private http: HttpClient) { }
 
   onSubmit() {
-
-
     this.http.post('http://localhost:8000/api/login', this.form).subscribe(
-
       data => console.log(data),
       error => this.handleError(error)
     );
