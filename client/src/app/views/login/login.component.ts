@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import {LoginService} from "../../Services/login.service";
 @Component({
   selector: 'app-dashboard',
   templateUrl: 'login.component.html'
@@ -16,14 +17,13 @@ export class LoginComponent {
   public error = null;
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private loginService: LoginService) { }
 
   onSubmit() {
-    this.http.post('http://localhost:8000/api/login', this.form).subscribe(
+    this.loginService.login(this.form).subscribe(
       data => console.log(data),
       error => this.handleError(error)
     );
-
   }
 
   handleError(error){

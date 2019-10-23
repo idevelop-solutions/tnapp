@@ -19,8 +19,6 @@ export class RegisterComponent {
 
   constructor(private http: HttpClient) { }
 
-
-
   onSubmit() {  
     this.http.post('http://localhost:8000/api/register', this.form).subscribe(
 
