@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import {LoginService} from "../../Services/login.service";
+import {TokenService} from "../../Services/token.service";
 @Component({
   selector: 'app-dashboard',
   templateUrl: 'login.component.html'
@@ -17,7 +18,7 @@ export class LoginComponent {
   public error = null;
   
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private token:TokenService) { }
 
   onSubmit() {
     this.loginService.login(this.form).subscribe(

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {TokenService} from './token.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import {TokenService} from './token.service';
 export class LoginService {
 
   private baseUrl = 'http://localhost:8000/api/';
-  constructor(private http:HttpClient, private token:TokenService) { }
+  constructor(private http:HttpClient) { }
 
   login (data){
     return this.http.post(`${this.baseUrl}login`, data);
