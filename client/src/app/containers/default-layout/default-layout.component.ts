@@ -45,7 +45,7 @@ export class DefaultLayoutComponent implements OnDestroy, OnInit {
 	logout(event: MouseEvent) {
 		event.preventDefault();
 		this.token.remove();
-		this.auth.changeAuthStatus(true);
+		this.auth.changeAuthStatus(false);
 		this.router.navigateByUrl('/');
 	}
 }
