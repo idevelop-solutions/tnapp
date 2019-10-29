@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import {LoginService} from "../../Services/login.service";
-import {TokenService} from "../../Services/token.service";
+import { LoginService } from "../../Services/login.service";
+import { TokenService } from "../../Services/token.service";
 @Component({
   selector: 'app-dashboard',
   templateUrl: 'login.component.html'
@@ -16,20 +16,25 @@ export class LoginComponent {
   }
 
   public error = null;
-  
 
-  constructor(private loginService: LoginService, private token:TokenService) { }
+
+  constructor(private loginService: LoginService, private token: TokenService) { }
 
   onSubmit() {
     this.loginService.login(this.form).subscribe(
-      data => console.log(data),
+      data => this.handleResponse(data),
       error => this.handleError(error)
     );
   }
 
-  handleError(error){
+  handleResponse(data){
 
-    this.error = error.error.error; 
+	this.token.handle(data.access_token);
+  }
+
+  handleError(error) {
+
+    this.error = error.error.error;
   }
 
 }
