@@ -9,6 +9,7 @@ export class TokenService {
   private iss = {
     login:'http://localhost:8000/api/login',
     register:'http://localhost:8000/api/register'
+  
   }
   constructor() { }
 
@@ -16,7 +17,6 @@ export class TokenService {
   handle(token) {
 
     this.set(token);
-    console.log(this.isValid());
   }
 
   set(token) {

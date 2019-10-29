@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { LoginService } from "../../Services/login.service";
 import { TokenService } from "../../Services/token.service";
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: 'login.component.html'
@@ -18,7 +19,7 @@ export class LoginComponent {
   public error = null;
 
 
-  constructor(private loginService: LoginService, private token: TokenService) { }
+  constructor(private loginService: LoginService, private token: TokenService,private router:Router) { }
 
   onSubmit() {
     this.loginService.login(this.form).subscribe(
@@ -28,8 +29,8 @@ export class LoginComponent {
   }
 
   handleResponse(data){
-
 	this.token.handle(data.access_token);
+	this.router.navigateByUrl('/dashboard');
   }
 
   handleError(error) {
