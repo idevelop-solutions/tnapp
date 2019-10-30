@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PasswordService } from '../../../Services/password.service';
-import { Snotify } from 'ng-snotify';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-password-reset-request',
@@ -12,7 +12,7 @@ export class PasswordResetRequestComponent implements OnInit {
     email: null
   };
   constructor(private password: PasswordService,
-    private notify:Snotify
+    private notify:SnotifyService
     ) { }
 
   ngOnInit() {
@@ -21,11 +21,11 @@ export class PasswordResetRequestComponent implements OnInit {
   onSubmit() {
     this.password.PasswordResetRequest(this.form).subscribe(
       data => this.handleResponse(data),
-      error => this.notify.error(error.error.error)
+      error=>this.notify.error(error.error.error) 
     );
   }
-  handleResponse(data) {
-    console.log("This is response:", data);
+  handleResponse(res) {
+    console.log("This is response:", res);
   }
 
 }
