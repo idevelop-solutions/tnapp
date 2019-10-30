@@ -8,10 +8,12 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-
+import { AfterLoginService } from './Services/after-login.service';
+import { BeforeLoginService } from './Services/before-login.service';
 export const routes: Routes = [
   {
     path: '',
+    canActivate:[BeforeLoginService],
     component: LoginComponent,
     data: {
       title: 'Login Page'
@@ -26,13 +28,14 @@ export const routes: Routes = [
   },
   {
     path: '500',
-    component: P500Component,
+    component: P404Component,  
     data: {
       title: 'Page 500'
     }
   },
   {
     path: 'register',
+    canActivate:[BeforeLoginService],
     component: RegisterComponent,
     data: {
       title: 'Register Page'
@@ -40,11 +43,13 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
+    canActivate:[AfterLoginService],
     redirectTo: '/dashboard', 
     pathMatch: 'full',
   },
   {
     path: '',
+    canActivate:[AfterLoginService],
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'
