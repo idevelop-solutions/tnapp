@@ -9,6 +9,6 @@ export class PasswordService {
   constructor(private http: HttpClient) { }
 
   PasswordResetRequest (data){
-    return this.http.post(`${this.baseUrl}PasswordResetRequest`, data);
+    return this.http.post(`${this.baseUrl}sendPasswordResetLink`, data);
   }
 }

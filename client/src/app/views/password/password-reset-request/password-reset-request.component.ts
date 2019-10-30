@@ -8,26 +8,25 @@ import { PasswordService } from '../../../Services/password.service';
 })
 export class PasswordResetRequestComponent implements OnInit {
   public form = {
-    email :null
-  }
-  constructor(private password:PasswordService) { }
+    email: null
+  };
+  constructor(private password: PasswordService) { }
 
   ngOnInit() {
   }
 
-  onSubmit(){
+  onSubmit() {
     this.password.PasswordResetRequest(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
-    ){}
+    );
+  }
+  handleResponse(data) {
+    console.log("This is response:", data);
   }
 
-  handleResponse(data){
-    console.log("This is response:",data);
-  }
-
-  handleError(error){
-    console.log("This is response:",error);
+  handleError(error) {
+    console.log("This is response:", error);
   }
 
 }
