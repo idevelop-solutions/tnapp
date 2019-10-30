@@ -45,6 +45,8 @@ import { LoginService } from "./Services/login.service";
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterService } from './Services/register.service';
 import { PasswordResetRequestComponent } from './views/password/password-reset-request/password-reset-request.component';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -60,7 +62,8 @@ import { PasswordResetRequestComponent } from './views/password/password-reset-r
         TabsModule.forRoot(),
         ChartsModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        SnotifyModule
     ],
     declarations: [
         AppComponent,
@@ -76,6 +79,8 @@ import { PasswordResetRequestComponent } from './views/password/password-reset-r
         useClass: HashLocationStrategy,
 
     },
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+        SnotifyService,
         LoginService,
         RegisterService
     ],
