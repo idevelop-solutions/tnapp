@@ -44,6 +44,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginService } from "./Services/login.service";
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterService } from './Services/register.service';
+import { PasswordResetRequestComponent } from './views/password/password-reset-request/password-reset-request.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -67,7 +68,8 @@ import { RegisterService } from './Services/register.service';
         P404Component,
         P500Component,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        PasswordResetRequestComponent
     ],
     providers: [{
         provide: LocationStrategy,
