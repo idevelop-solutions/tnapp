@@ -36,7 +36,7 @@ export class PasswordResetResponseComponent implements OnInit {
   }
   handleResponse(data){
     console.log("HERE IS THE RESPONSE:",data);
-    
+    this.router.navigateByUrl('/');
   }
 
   handleError(error){
