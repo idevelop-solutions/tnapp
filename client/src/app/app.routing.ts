@@ -8,12 +8,18 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-
+import { AfterLoginService } from './Services/after-login.service';
+import { BeforeLoginService } from './Services/before-login.service';
+import { PasswordResetRequestComponent } from './views/password/password-reset-request/password-reset-request.component';
+import { PasswordResetResponseComponent } from './views/password/password-reset-response/password-reset-response.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
+    canActivate:[BeforeLoginService],
+    component: LoginComponent,
+    data: {
+      title: 'Login Page'
+    }
   },
   {
     path: '404',
@@ -24,27 +30,44 @@ export const routes: Routes = [
   },
   {
     path: '500',
-    component: P500Component,
+    component: P404Component,  
     data: {
       title: 'Page 500'
     }
   },
   {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
-  },
-  {
     path: 'register',
+    canActivate:[BeforeLoginService],
     component: RegisterComponent,
     data: {
       title: 'Register Page'
     }
   },
   {
+    path: 'password-reset-response',
+    canActivate:[BeforeLoginService],
+    component:PasswordResetResponseComponent,
+    data: {
+      title: 'Reset Password'
+    }
+  },
+  {
+    path: 'password-reset-request',
+    canActivate:[BeforeLoginService],
+    component: PasswordResetRequestComponent,
+    data: {
+      title: 'Reset Password'
+    }
+  },
+  {
+    path: 'dashboard',
+    canActivate:[AfterLoginService],
+    redirectTo: '/dashboard', 
+    pathMatch: 'full',
+  },
+  {
     path: '',
+    canActivate:[AfterLoginService],
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'

@@ -5,43 +5,52 @@
         <div class="col-md-6 mx-auto">
           <div class="card mx-4">
             <div class="card-body p-4">
-              <form>
+             <form #registerForm=ngForm (ngSubmit)="onSubmit()">
                 <h1>Register</h1>
                 <p class="text-muted">Create your account</p>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-user"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Username" autocomplete="username" required>
+                  <div class="text-center alert alert-danger" [hidden] = "!error.name">
+                      {{error.name}}
+                  </div>
+                  <input type="text" class="form-control" placeholder="Name" name="name" [(ngModel)]="form.name" autocomplete="username" required>
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text">@</span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Email" autocomplete="email" required>
+                  <div class="text-center alert alert-danger" [hidden] = "!error.email">
+                      {{error.email}}
+                  </div>
+                  <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="form.email" autocomplete="email" required>
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-lock"></i></span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Password" autocomplete="new-password" required>
+                  <div class="text-center alert alert-danger" [hidden] = "!error.password">
+                      {{error.password}}
+                  </div>
+                  <input type="password" class="form-control" placeholder="Password"  name="password" [(ngModel)]="form.password" autocomplete="new-password" required>
                 </div>
                 <div class="input-group mb-4">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-lock"></i></span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password" required>
+                  <input type="password" class="form-control" placeholder="Repeat password" name="password_confirmation" [(ngModel)]="form.password_confirmation" autocomplete="new-password" required>
                 </div>
-                <button type="button" class="btn btn-block btn-success">Create Account</button>
+                <button type="submit" class="btn btn-block btn-success" [disabled]="!registerForm.valid">Create Account</button>
               </form>
             </div>
-            <div class="card-footer p-4">
+            <div class="card-footer p-4 hide">
               <div class="row">
                 <div class="col-6">
-                  <button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
+                  <button class="btn btn-block btn-facebook" type="button"><span>Facebook</span></button>
                 </div>
                 <div class="col-6">
-                  <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
+                  <button class="btn btn-block btn-google" type="button"><span>Google Account</span></button>
                 </div>
               </div>
             </div>
