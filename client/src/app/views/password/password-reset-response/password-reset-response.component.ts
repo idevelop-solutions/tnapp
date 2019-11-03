@@ -40,9 +40,9 @@ export class PasswordResetResponseComponent implements OnInit {
   }
 
   handleError(error){
-    console.log("HERE IS THE RESPONSE:",error);
+    console.log("HERE IS THE Error:",error);
   }
-  
+
   ngOnInit() {
   }
 
