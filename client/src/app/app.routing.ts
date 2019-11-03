@@ -45,8 +45,8 @@ export const routes: Routes = [
   },
   {
     path: 'password-reset-response',
-    canActivate:[BeforeLoginService],
     component:PasswordResetResponseComponent,
+    canActivate:[BeforeLoginService],
     data: {
       title: 'Reset Password'
     }

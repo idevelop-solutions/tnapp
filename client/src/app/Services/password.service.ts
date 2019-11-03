@@ -10,4 +10,8 @@ export class PasswordService {
   PasswordResetRequest (data){
     return this.http.post(`${this.baseUrl}sendPasswordResetLink`, data);
   }
+
+  changePassword(data){
+    return this.http.post(`${this.baseUrl}changePassword`, data);
+  }
 }
