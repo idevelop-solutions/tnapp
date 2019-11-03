@@ -46,6 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterService } from './Services/register.service';
 import { PasswordResetRequestComponent } from './views/password/password-reset-request/password-reset-request.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { PasswordResetResponseComponent } from './views/password/password-reset-response/password-reset-response.component';
 
 @NgModule({
     imports: [
@@ -72,7 +73,8 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
         P500Component,
         LoginComponent,
         RegisterComponent,
-        PasswordResetRequestComponent
+        PasswordResetRequestComponent,
+        PasswordResetResponseComponent
     ],
     providers: [{
         provide: LocationStrategy,

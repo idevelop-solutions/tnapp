@@ -11,6 +11,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { AfterLoginService } from './Services/after-login.service';
 import { BeforeLoginService } from './Services/before-login.service';
 import { PasswordResetRequestComponent } from './views/password/password-reset-request/password-reset-request.component';
+import { PasswordResetResponseComponent } from './views/password/password-reset-response/password-reset-response.component';
 export const routes: Routes = [
   {
     path: '',
@@ -50,6 +51,16 @@ export const routes: Routes = [
       title: 'Reset Password'
     }
   },
+
+  {
+    path: 'password-reset-response',
+    canActivate:[BeforeLoginService],
+    component:PasswordResetResponseComponent,
+    data: {
+      title: 'Reset Password'
+    }
+  },
+
   {
     path: 'dashboard',
     canActivate:[AfterLoginService],
