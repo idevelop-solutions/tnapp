@@ -11,9 +11,10 @@ export class PasswordResetRequestComponent implements OnInit {
   public form = {
     email: null
   };
+
   constructor(private password: PasswordService,
-    private notify:SnotifyService
-    ) { }
+    private notify: SnotifyService
+  ) { }
 
   ngOnInit() {
   }
@@ -21,11 +22,16 @@ export class PasswordResetRequestComponent implements OnInit {
   onSubmit() {
     this.password.PasswordResetRequest(this.form).subscribe(
       data => this.handleResponse(data),
-      error=>this.notify.error(error.error.error) 
+      error => this.handleError(error)
     );
   }
+
   handleResponse(res) {
     console.log("This is response:", res);
+  }
+
+  handleError(error) {
+    this.notify.error(error.error.errors);
   }
 
 }

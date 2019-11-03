@@ -34,16 +34,17 @@ export class PasswordResetResponseComponent implements OnInit {
      error => this.handleError(error)
    )
   }
+  
   handleResponse(data){
     console.log("HERE IS THE RESPONSE:",data);
     this.router.navigateByUrl('/');
   }
 
   handleError(error){
-    console.log("HERE IS THE Error:",error);
   }
 
   ngOnInit() {
+
   }
 
 }

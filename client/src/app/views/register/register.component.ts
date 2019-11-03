@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { RegisterService } from '../../Services/register.service';
 import { TokenService } from '../../Services/token.service';
 import { Router } from '@angular/router';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,9 +21,14 @@ export class RegisterComponent {
   public error =[];
 
 
-  constructor(private registerService: RegisterService, private token:TokenService, private router:Router) { }
+  constructor(
+    private registerService: RegisterService,
+    private token:TokenService,
+    private router:Router,
+    private notify:SnotifyService) { }
 
   onSubmit() {
+    this.notify.info('Wait...', 'Login...');
     this.registerService.register(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
