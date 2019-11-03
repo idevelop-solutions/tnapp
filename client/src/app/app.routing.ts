@@ -45,8 +45,8 @@ export const routes: Routes = [
   },
   {
     path: 'password-reset-response',
-    component:PasswordResetResponseComponent,
     canActivate:[BeforeLoginService],
+    component:PasswordResetResponseComponent,
     data: {
       title: 'Reset Password'
     }
@@ -59,9 +59,6 @@ export const routes: Routes = [
       title: 'Reset Password'
     }
   },
-
-  
-
   {
     path: 'dashboard',
     canActivate:[AfterLoginService],

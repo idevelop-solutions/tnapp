@@ -13,6 +13,6 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
     Route::post('sendPasswordResetLink', 'PasswordResetController@sendEmail');
-    Route::post('changePassword', 'changePasswordController@process');
+    Route::post('changePassword', 'changePasswordController@changePassword');
 
 });

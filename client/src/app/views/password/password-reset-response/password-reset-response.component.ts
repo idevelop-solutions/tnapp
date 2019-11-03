@@ -35,23 +35,14 @@ export class PasswordResetResponseComponent implements OnInit {
    )
   }
   handleResponse(data){
-    let _router = this.router;
-    this.Notify.confirm('Done!, Now login with new Password', {
-      buttons:[
-        {text: 'Okay', 
-        action: toster =>{
-           _router.navigateByUrl('/login'),
-           this.Notify.remove(toster.id)
-          }
-      },
-      ]
-    })
+    console.log("HERE IS THE RESPONSE:",data);
     
   }
 
   handleError(error){
-    this.error = error.error.errors;
+    console.log("HERE IS THE RESPONSE:",error);
   }
+  
   ngOnInit() {
   }
 
