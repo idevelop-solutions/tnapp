@@ -18,7 +18,7 @@ export class LoginComponent {
     password: null
   }
 
-  public error = null;
+  public error = [];
 
 
   constructor(
@@ -43,7 +43,7 @@ export class LoginComponent {
   }
 
   handleError(error) {
-    this.notify.error(error.error.error);
+    this.error = error.error.errors; 
   }
 
 }
