@@ -22,26 +22,26 @@ export class RegisterComponent {
 
 
   constructor(
+    private notify:SnotifyService,
     private registerService: RegisterService,
     private token:TokenService,
-    private router:Router,
-    private notify:SnotifyService) { }
+    private router:Router) { }
 
   onSubmit() {
-    this.notify.info('Wait...', 'Login...');
-    this.registerService.register(this.form).subscribe(
+      this.notify.info('Waiting...','Registration',{timeout:5000});
+      this.registerService.register(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
     );
   }
 
   handleResponse(data){
-    this.token.handle(data.access_token);
-    this.router.navigateByUrl('/dashboard');
+      this.token.handle(data.access_token);
+      console.log('HERE IS THE REGISTERATION RESPONSE:',data);
+      this.router.navigateByUrl('/dashboard');
     }
 
   handleError(error){
-
     this.error = error.error.errors; 
   }
 

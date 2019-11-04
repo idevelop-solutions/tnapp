@@ -11,6 +11,7 @@ export class PasswordResetRequestComponent implements OnInit {
   public form = {
     email: null
   };
+  public error = [];
 
   constructor(private password: PasswordService,
     private notify: SnotifyService
@@ -20,6 +21,7 @@ export class PasswordResetRequestComponent implements OnInit {
   }
 
   onSubmit() {
+    this.notify.info('Wait...' ,{timeout:3000})
     this.password.PasswordResetRequest(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -27,11 +29,14 @@ export class PasswordResetRequestComponent implements OnInit {
   }
 
   handleResponse(res) {
+    this.notify.success(res.data,{timeout:0});
+    this.form.email = null;
     console.log("This is response:", res);
   }
 
   handleError(error) {
-    this.notify.error(error.error.errors);
+    this.notify.error(error.error.error);
+    this.error = error.error.error;
   }
 
 }

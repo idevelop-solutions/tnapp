@@ -43,7 +43,8 @@ export class LoginComponent {
   }
 
   handleError(error) {
-    this.error = error.error.errors; 
+    this.notify.error(error.error.error);
+    this.error = error.error.error;
   }
 
 }
