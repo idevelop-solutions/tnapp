@@ -29,21 +29,42 @@ export class PasswordResetResponseComponent implements OnInit {
   }
 
   onSubmit(){
+    this.Notify.info('Changing your password!','Password');
    this.password.changePassword(this.form).subscribe(
      data => this.handleResponse(data),
      error => this.handleError(error)
    )
   }
   handleResponse(data){
-    console.log("HERE IS THE RESPONSE:",data);
-    this.router.navigateByUrl('/');
+
+    let _router = this.router;
+    this.Notify.confirm('Done!, Now login with new Password', {
+      buttons:[
+        {text: 'Okay', 
+        action: toster =>{
+           _router.navigateByUrl('/'),
+           this.Notify.remove(toster.id)
+          }
+      },
+      ]
+    })
   }
 
   handleError(error){
-    console.log("HERE IS THE Error:",error);
+    this.error = error.error.errors;
   }
 
+
+  // handleResponse(data){
+  //   console.log("HERE IS THE RESPONSE:",data);
+  //   this.router.navigateByUrl('/');
+  // }
+
+  // handleError(error){
+  // }
+
   ngOnInit() {
+
   }
 
 }
